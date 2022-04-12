@@ -1,6 +1,7 @@
 //Se importa el modulo para la base de datos
 const mongoose = require("mongoose");
 
+//Se crea el esquema
 const registroSchema = mongoose.Schema({
     nombres: {
         type: String,
@@ -44,4 +45,4 @@ const registroSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Registro', registroSchema);
+module.exports = mongoose.model('Registros', registroSchema);
