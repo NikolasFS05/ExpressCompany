@@ -5,7 +5,7 @@ const router = express.Router();
 
 //Creación de EndPoints
 //Petición Get
-router.get("/facturas", (req, res) => {
+router.get("/compra", (req, res) => {
     facturaSchema.find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
