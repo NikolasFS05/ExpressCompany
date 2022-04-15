@@ -16,8 +16,8 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 
 //Creación del intermediario hacia las rutas
-app.use('/',registroRoutes);
-app.use('/', facturaRoutes);
+app.use('/api',registroRoutes);
+app.use('/api', facturaRoutes);
 
 //Conexión de la base de datos
 mongoose.connect(process.env.MONGODB_URI)
