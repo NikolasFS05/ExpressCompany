@@ -36,3 +36,11 @@ router.put("/facturas/:id", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+
+//Petición Delete
+router.delete("/facturas/:id", (req, res) =>{
+    const { id } = req.params;
+    facturaSchema.deleteOne({_id:id})
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message : error}));
+});

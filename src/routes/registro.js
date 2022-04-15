@@ -36,3 +36,13 @@ router.put("/registros/:id", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+
+//Petición Delete
+router.delete("/registros/:id", (req, res) =>{
+    const { id } = req.params;
+    registroSchema.deleteOne({_id:id})
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message : error}));
+});
+
+module.exports = router;
