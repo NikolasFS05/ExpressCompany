@@ -18,13 +18,10 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 
 //Creación del intermediario hacia las rutas
-<<<<<<< Updated upstream
-app.use('/api', registroRoutes);
-=======
+
 app.use('/api', compraRoutes);
 app.use('/api',ingresoRoutes);
 app.use('/api',registroRoutes);
->>>>>>> Stashed changes
 app.use('/api', facturaRoutes);
 
 //Conexión de la base de datos
