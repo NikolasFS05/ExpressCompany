@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 //Se crea el esquema
-const facturaSchema = mongoose.Schema({
+const compraSchema = mongoose.Schema({
     usuario: {
         type: String,
         required: true
