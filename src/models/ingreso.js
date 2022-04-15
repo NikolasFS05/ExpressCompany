@@ -2,12 +2,12 @@
 const mongoose = require("mongoose");
 
 //Se crea el esquema
-const registroSchema = mongoose.Schema({
+const ingresoSchema = mongoose.Schema({
     usuario: {
         type: String,
         required: true
     },
-    contraseña: {
+    contrasena: {
         type: String,
         required: true
     }
