@@ -18,3 +18,10 @@ router.get("/facturas/:id", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+
+//Petición Post
+router.post("/facturas", (req, res) => {
+    const factura = facturaSchema(req.body);
+    factura .save() .then((data) => res.json(data))
+        .catch((error) => res.json({message: error}));
+})

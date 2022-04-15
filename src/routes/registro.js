@@ -18,3 +18,10 @@ router.get("/registros/:id", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+
+//Petición Post
+router.post("/registros", (req, res) => {
+    const registro = registroSchema(req.body);
+    registro .save() .then((data) => res.json(data))
+        .catch((error) => res.json({message: error}));
+})

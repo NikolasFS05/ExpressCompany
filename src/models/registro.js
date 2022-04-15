@@ -11,7 +11,7 @@ const registroSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    dirección: {
+    direccion: {
         type: String,
         required: true
     },
