@@ -25,3 +25,14 @@ router.post("/registros", (req, res) => {
     registro .save() .then((data) => res.json(data))
         .catch((error) => res.json({message: error}));
 })
+
+//Petición Put
+router.put("/registros/:id", (req, res) => {
+    const { id } = req.params;
+    const {  nombres, apellidos, direccion, pais, ciudad, codigoPostal, telefono, correo, usuario, contraseña} = req.body;
+    registroSchema.updateOne({ _id: id }, {
+        $set: { nombres, apellidos, direccion, pais, ciudad, codigoPostal, telefono, correo, usuario, contraseña}
+    })
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
