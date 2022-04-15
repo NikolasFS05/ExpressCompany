@@ -16,7 +16,7 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 
 //Creación del intermediario hacia las rutas
-app.use('/api',registroRoutes);
+app.use('/api', registroRoutes);
 app.use('/api', facturaRoutes);
 
 //Conexión de la base de datos
