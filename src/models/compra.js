@@ -29,4 +29,4 @@ const compraSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Facturas', facturaSchema);
+module.exports = mongoose.model('Compras', compraSchema);

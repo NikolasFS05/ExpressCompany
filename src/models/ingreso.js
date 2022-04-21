@@ -13,4 +13,4 @@ const ingresoSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Registros', registroSchema);
+module.exports = mongoose.model('Ingresos', ingresoSchema);
