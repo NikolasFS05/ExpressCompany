@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 
 //Se crea el esquema
 const compraSchema = mongoose.Schema({
+    codigo:{
+        type: String,
+        required: true
+    },
     usuario: {
         type: String,
         required: true
