@@ -1,12 +1,12 @@
 //Importación de modulos
 const express = require("express");
-const registroSchema = require("../models/registro");
+const registrosSchema = require("../models/registro");
 const router = express.Router();
 
 //Creación de EndPoints
 //Petición Get
 router.get("/registros", (req, res) => {
-    registroSchema.find()
+    registrosSchema.find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
@@ -14,14 +14,14 @@ router.get("/registros", (req, res) => {
 //Petición Get con parametro
 router.get("/registros/:id", (req, res) => {
     const { id } = req.params;
-    registroSchema.find({_id:id})
+    registrosSchema.find({_id:id})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 
 //Petición Post
 router.post("/registros", (req, res) => {
-    const registro = registroSchema(req.body);
+    const registro = registrosSchema(req.body);
     registro .save() .then((data) => res.json(data))
         .catch((error) => res.json({message: error}));
 })
@@ -30,7 +30,7 @@ router.post("/registros", (req, res) => {
 router.put("/registros/:id", (req, res) => {
     const { id } = req.params;
     const {  nombres, apellidos, direccion, pais, ciudad, codigoPostal, telefono, correo, usuario, contraseña} = req.body;
-    registroSchema.updateOne({ _id: id }, {
+    registrosSchema.updateOne({ _id: id }, {
         $set: { nombres, apellidos, direccion, pais, ciudad, codigoPostal, telefono, correo, usuario, contraseña}
     })
         .then((data) => res.json(data))
@@ -40,7 +40,7 @@ router.put("/registros/:id", (req, res) => {
 //Petición Delete
 router.delete("/registros/:id", (req, res) =>{
     const { id } = req.params;
-    registroSchema.deleteOne({_id:id})
+    registrosSchema.deleteOne({_id:id})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message : error}));
 });
