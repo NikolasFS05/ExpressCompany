@@ -1,5 +1,7 @@
 //Se importa el modulo para la base de datos
 const mongoose = require("mongoose");
+//Se importa el componente BCrypt
+const bcrypt = require("bcrypt");
 
 //Se crea el esquema
 const registroSchema = mongoose.Schema({
@@ -44,5 +46,10 @@ const registroSchema = mongoose.Schema({
         required: true
     }
 });
+
+registroSchema.methods.encyptClave = async(contraseña) => {
+    const salt = await bcrypt.genSalt(10);
+    return bcrypt.hash(contraseña, salt);
+}
 
 module.exports = mongoose.model('Registros', registroSchema);

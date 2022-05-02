@@ -30,7 +30,7 @@ router.post("/facturas", (req, res) => {
 router.put("/facturas/:id", (req, res) => {
     const { id } = req.params;
     const { usuario, pais, producto, precio, empresa, metodoPago, horaCompra, idCompra} = req.body;
-    facturaSchemaSchema.updateOne({ _id: id }, {
+    facturaSchema.updateOne({ _id: id }, {
         $set: { usuario, pais, producto, precio, empresa, metodoPago, horaCompra, idCompra}
     })
         .then((data) => res.json(data))
