@@ -3,10 +3,9 @@ const mongoose = require("mongoose");
 
 //Se crea el esquema
 const facturaSchema = mongoose.Schema({
-    usuario: {
-        type: String,
-        required: true
-    },
+    usuario: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Registro'
+    }],
     pais: {
         type: String,
         required: true

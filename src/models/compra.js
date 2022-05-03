@@ -7,10 +7,10 @@ const compraSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    usuario: {
-        type: String,
-        required: true
-    },
+    usuario: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Registro'
+
+    }],
     producto: {
         type: String,
         required: true

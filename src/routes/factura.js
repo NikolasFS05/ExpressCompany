@@ -1,6 +1,7 @@
 //Importación de modulos
 const express = require("express");
 const facturaSchema = require("../models/factura");
+const registroSchema = require("../models/registro");
 const router = express.Router();
 
 //Creación de EndPoints
@@ -27,11 +28,24 @@ router.post("/facturas", (req, res) => {
 });
 
 //Petición Put
-router.put("/facturas/:id", (req, res) => {
+router.put("/facturas/:id", async(req, res) => {
     const { id } = req.params;
-    const { usuario, pais, producto, precio, empresa, metodoPago, horaCompra, idCompra} = req.body;
+    const registro = registroSchema(req.body);
+    var idRegistro = null;
+
+    const registroConsulta = await registroSchema.findOne({usuario: req.body.usuario});
+    if (!registroConsulta) {
+        await registro.save().then((dataRegistro) => {
+            idRegistro = dataRegistro._id;
+        });
+    } else {
+        idRegistro = registroConsulta._id;
+    }
+
+    //const { usuario, pais, producto, precio, empresa, metodoPago, horaCompra, idCompra} = req.body;
     facturaSchema.updateOne({ _id: id }, {
-        $set: { usuario, pais, producto, precio, empresa, metodoPago, horaCompra, idCompra}
+        $addToSet: {facturas: idRegistro}
+        //$set: { usuario, pais, producto, precio, empresa, metodoPago, horaCompra, idCompra}
     })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));

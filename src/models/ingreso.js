@@ -5,10 +5,9 @@ const bcrypt = require("bcrypt");
 
 //Se crea el esquema
 const ingresoSchema = mongoose.Schema({
-    usuario: {
-        type: String,
-        required: true
-    },
+    usuario: [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'Registro'
+    }],
     contrasena: {
         type: String,
         required: true
